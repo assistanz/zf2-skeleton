@@ -17,7 +17,7 @@ Module Structure
 Every module has the following files and directories
 
 * config  - Module configuration
-** module.config.php - Contains router configuration, dependency services, translator path, view-templates, view-helpers, etc.,
+    * module.config.php - Contains router configuration, dependency services, translator path, view-templates, view-helpers, etc.,
 * language - Contains language translation files per language
 * src - Module source code written in PSR-0 Standard
 * test - Test code to check functionality of the module (Unit Test, Integration Test, etc.,)
@@ -57,13 +57,13 @@ DB Tools
 ------
 
 * ORM Mapped entities can be generated to tables using scripts
-**  [~/project.base]$ php vendor/bin/doctrine
+    *  [~/project.base]$ php vendor/bin/doctrine
 * Automated Table creation should not be done in production via doctrine save the SQL and run it via migration scripts
-** [~/project.base]$ php vendor/bin/doctrine orm:schema-tool:update --dump-sql
-** [~/project.base]$ php ./vendor/bin/doctrine-module migrations:generate --configuration config/migrations.yml
-** Save the change add your own changes (Refer http://docs.doctrine-project.org/projects/doctrine-migrations/en/latest/reference/migration_classes.html)
-** In production run the following
-** [~/project.base]$ php ./vendor/bin/doctrine-module migrations:migrate --configuration config/migrations.yml
+    * [~/project.base]$ php vendor/bin/doctrine orm:schema-tool:update --dump-sql
+    * [~/project.base]$ php ./vendor/bin/doctrine-module migrations:generate --configuration config/migrations.yml
+    * Save the change add your own changes (Refer http://docs.doctrine-project.org/projects/doctrine-migrations/en/latest/reference/migration_classes.html)
+    * In production run the following
+    * [~/project.base]$ php ./vendor/bin/doctrine-module migrations:migrate --configuration config/migrations.yml
 
 
 Security and Pre-developed Modules
