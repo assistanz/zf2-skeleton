@@ -36,38 +36,39 @@ Explaining the album module
 * Form - Structure and content of html forms which includes validation and filtering to avoid injections and inappropriate data 
 * Service - The business logic of the module commonly known as models
 
+
 Guidelines
 ----------
 
-# Coding standard should be practiced as in the sample
-# Filename should be with PHP 5.3 namespaces and PSR-0 recommendations
-# Function names should be with Hungarian notation start with small letter and separate words with capital letter
-# Don't store uploaded files inside public directories store it in different location out of this project and use Apache Alias directive to load them 
-# Use SVN/Git to version the project and have multiple stages before releasing to production
-# Try to write as many test cases as possible to ensure the functionality is without bug
-# Run unit tests before committing the code to repository
-# Use Phuppet and Vagrant for development and stagging environments if required
-# Add all the required libraries and extensions in composer.json 
-# Automate deployments and testing using a continues integration system like Jenkins/Hudson if possible
+* Coding standard should be practiced as in the sample
+* Filename should be with PHP 5.3 namespaces and PSR-0 recommendations
+* Function names should be with Hungarian notation start with small letter and separate words with capital letter
+* Don't store uploaded files inside public directories store it in different location out of this project and use Apache Alias directive to load them 
+* Use SVN/Git to version the project and have multiple stages before releasing to production
+* Try to write as many test cases as possible to ensure the functionality is without bug
+* Run unit tests before committing the code to repository
+* Use Phuppet and Vagrant for development and stagging environments if required
+* Add all the required libraries and extensions in composer.json 
+* Automate deployments and testing using a continues integration system like Jenkins/Hudson if possible
 
 
 
 DB Tools
 ------
 
-# ORM Mapped entities can be generated to tables using scripts
-##  [~/project.base]$ php vendor/bin/doctrine
-# Automated Table creation should not be done in production via doctrine save the SQL and run it via migration scripts
-## [~/project.base]$ php vendor/bin/doctrine orm:schema-tool:update --dump-sql
-## [~/project.base]$ php ./vendor/bin/doctrine-module migrations:generate --configuration config/migrations.yml
-## Save the change add your own changes (Refer http://docs.doctrine-project.org/projects/doctrine-migrations/en/latest/reference/migration_classes.html)
-## In production run the following
-## [~/project.base]$ php ./vendor/bin/doctrine-module migrations:migrate --configuration config/migrations.yml
+* ORM Mapped entities can be generated to tables using scripts
+**  [~/project.base]$ php vendor/bin/doctrine
+* Automated Table creation should not be done in production via doctrine save the SQL and run it via migration scripts
+** [~/project.base]$ php vendor/bin/doctrine orm:schema-tool:update --dump-sql
+** [~/project.base]$ php ./vendor/bin/doctrine-module migrations:generate --configuration config/migrations.yml
+** Save the change add your own changes (Refer http://docs.doctrine-project.org/projects/doctrine-migrations/en/latest/reference/migration_classes.html)
+** In production run the following
+** [~/project.base]$ php ./vendor/bin/doctrine-module migrations:migrate --configuration config/migrations.yml
 
 
 Security and Pre-developed Modules
 ----------------------------------
 
-# The application can use various other modules available from Zend Framework community http://modules.zendframework.com/
-# Security can be implemented as explained in https://github.com/bjyoungblood/BjyAuthorize
+* The application can use various other modules available from Zend Framework community http://modules.zendframework.com/
+* Security can be implemented as explained in https://github.com/bjyoungblood/BjyAuthorize
 
