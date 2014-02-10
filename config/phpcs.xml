@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<ruleset name="AZ">
+<description>AssistanZ's Coding Standard</description>
+    
+    <!-- Rules for Tags -->
+    <!-- No short tags in PHP -->
+    <rule ref="Generic.PHP.DisallowShortOpenTag"/>
+    <!-- No file can end with PHP close tag -->
+    <rule ref="Zend.Files.ClosingTag"/>
+    <!-- No Character allowed before opening tags -->
+    <rule ref="Generic.PHP.CharacterBeforePHPOpeningTag"/>
+    <!-- End of file should have a line -->
+    <rule ref="PSR2.Files.EndFileNewline" />
+    <!-- End of Rules for Tags -->
+    
+    
+    <!-- Rules for General Spacing -->
+    <!-- Only 4 spaces should be used for indents, not the tabs -->
+    <rule ref="Generic.WhiteSpace.DisallowTabIndent" />
+    <!-- Make sure the indents are clean when if/while are looped internally -->
+    <!-- Note this works only for the control structures misses for few other things -->
+    <rule ref="Generic.WhiteSpace.ScopeIndent" />
+    <!-- Closing brace indentadion should be as equal as the declaration -->
+    <rule ref="PEAR.WhiteSpace.ScopeClosingBrace"/>
+    
+    <!-- <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/> -->
+    <!-- No white space before semicolon -->
+    <rule ref="Squiz.WhiteSpace.SemicolonSpacing"/>
+    <!-- One space after scope keywords -->
+    <rule ref="Squiz.WhiteSpace.ScopeKeywordSpacing"/>
+    <rule ref="Squiz.WhiteSpace.OperatorSpacing"/>
+    <rule ref="Squiz.WhiteSpace.ObjectOperatorSpacing"/>
+    <rule ref="Squiz.WhiteSpace.MemberVarSpacing"/>
+    <rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing"/>
+    <rule ref="Squiz.WhiteSpace.LanguageConstructSpacing"/>
+    <rule ref="Squiz.WhiteSpace.FunctionSpacing"/>
+    <rule ref="Squiz.WhiteSpace.ControlStructureSpacing"/>
+    
+    <!-- End of Rules for General Spacing -->
+    
+    <!-- Class Declaration and Function Declarations -->
+    <!-- Check duplicate names -->
+    <rule ref="Generic.Classes.DuplicateClassName" />
+    <!-- Makesure the classname and filenames are same -->
+    <rule ref="Squiz.Classes.ClassFileName" />
+    <!-- Class naming standards with Braces -->
+    <rule ref="Generic.NamingConventions.CamelCapsFunctionName" />
+    <!-- Class Constructors should be with __construct not in PHP4 standard -->
+    <rule ref="Generic.NamingConventions.ConstructorName" />
+    <!-- Constants declared in the class should be all upper case -->
+    <rule ref="Generic.NamingConventions.UpperCaseConstantName" />
+    <!-- Variables should not have numbers and should have good standard-->
+    <rule ref="Zend.NamingConventions.ValidVariableName" />
+    <!-- Force self:: usage for statics -->
+    <rule ref="Squiz.Classes.SelfMemberReference" />
+    <rule ref="Squiz.Scope.StaticThisUsage" />
+    <rule ref="Squiz.Scope.MethodScope" />
+    <rule ref="Squiz.Scope.MemberVarScope" />
+    
+    <!-- TODO Verify and rewrite again -->
+    <rule ref="PSR1.Classes.ClassDeclaration" />    
+    <!-- Function brackets will be on same line of declaration -->
+    <rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie" />
+    <!-- Function each argument should have a spacing after the comma -->
+    <rule ref="Generic.Functions.FunctionCallArgumentSpacing" />
+    <!-- Force optional arguments to last -->
+    <rule ref="PEAR.Functions.ValidDefaultValue"/>
+    
+    <!-- Make sure the names are hungarian Notations -->
+    <!-- End of Class Declaration and Function Declarations -->
+    
+    <!-- Common PHP Rules -->
+    <!-- Don't allow silencing error using '@' symbol -->
+    <rule ref="Generic.PHP.NoSilencedErrors"/>
+    <!-- Avoid unnecessary string concatination -->
+    <rule ref="Generic.Strings.UnnecessaryStringConcat" />
+    <rule ref="Squiz.Strings.EchoedStrings" />
+<!--    <rule ref="Squiz.Strings.DoubleQuoteUsage" />-->
+    
+    <!-- Only one statement per line -->
+    <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
+    <!-- No space should be used for type casting-->
+    <rule ref="Generic.Formatting.NoSpaceAfterCast"/>
+    <!-- Avoid Inline control structures -->
+    <rule ref="Generic.ControlStructures.InlineControlStructure"/>
+    <!-- Avoid use of Forbidded functions -->
+    <rule ref="Squiz.PHP.ForbiddenFunctions" />
+    <!-- Avoid use of deprecated functions -->
+    <rule ref="Generic.PHP.DeprecatedFunctions" />
+    
+    
+    <!-- PHP inbuilt functions shuld be in lower case -->
+    <rule ref="Squiz.PHP.LowercasePHPFunctions" />
+    <!-- Alert on exit, break and throw -->
+    <rule ref="Squiz.PHP.NonExecutableCode" />
+    <!-- Functions closures should not be called in the declaration -->
+    <rule ref="Squiz.PHP.InnerFunctions" />
+    <!-- <<< Heredocs should be avoided -->
+    <rule ref="Squiz.PHP.Heredoc" />
+    <!-- global Keyword should not be used -->
+    <rule ref="Squiz.PHP.GlobalKeyword" />
+    <!-- Avoid Eval usage -->
+    <rule ref="Squiz.PHP.Eval" />
+    <!-- Avoid print_r and error_log -->
+    <rule ref="Squiz.PHP.DiscouragedFunctions" />
+    <!-- Avoid ob_end_flush this might terminate the code -->
+    <rule ref="Squiz.PHP.DisallowObEndFlush" />
+    <!-- Avoid Comaprision value assignment -->
+    <rule ref="Squiz.PHP.DisallowComparisonAssignment" />
+    <!-- Valid increment/decrement operators usage test  -->
+    <rule ref="Squiz.Operators.IncrementDecrementUsage" />
+    <!-- && and || should be used instead of 'and' and 'or' -->
+    <rule ref="Squiz.Operators.ValidLogicalOperators" />
+    <!-- Functions cannot have duplicate arguments -->
+    <rule ref="Squiz.Functions.FunctionDuplicateArgument" />
+    
+    
+    <rule ref="Squiz.ControlStructures.ControlSignature" />
+    <rule ref="Squiz.ControlStructures.ElseIfDeclaration" />
+    <rule ref="Squiz.ControlStructures.ForEachLoopDeclaration" />
+    <rule ref="Squiz.ControlStructures.ControlSignature" />
+    <rule ref="Squiz.ControlStructures.ForLoopDeclaration" />
+    <rule ref="Squiz.ControlStructures.InlineIfDeclaration" />
+    <rule ref="Squiz.ControlStructures.LowercaseDeclaration" />
+    <rule ref="Squiz.ControlStructures.SwitchDeclaration" />
+    
+    <!-- End of Common PHP Rules -->
+
+    
+    <!-- PHP Docs and Comments  -->
+    <!-- Warn TODOs in the code -->
+    <rule ref="Generic.Commenting.Todo" />
+    <!-- Check multiline comments are used properly -->
+    <rule ref="Squiz.Commenting.BlockComment" />
+    <rule ref="Squiz.Commenting.DocCommentAlignment" />
+    <!-- A file should have the details of the license in the file comment -->
+    <rule ref="PEAR.Commenting.FileComment" /> 
+    <!-- A Class should have the details of the functionality it provides -->
+    <rule ref="Squiz.Commenting.ClassComment" />
+    <rule ref="Squiz.Commenting.FunctionComment" />
+    <rule ref="Squiz.Commenting.VariableComment" />
+    
+    
+    <rule ref="Squiz.Commenting.InlineComment" />
+    <rule ref="Squiz.Commenting.EmptyCatchComment" />
+    
+    <!-- End of PHP Docs and Comments  -->
+    
+    <!-- Metrics and Analysis  -->
+    <rule ref="Squiz.CodeAnalysis.EmptyStatement" />
+    
+    <rule ref="Generic.Metrics.NestingLevel" >
+        <properties>
+           <property name="nestingLevel" value="3"/>
+           <property name="absoluteNestingLevel" value="5"/>
+        </properties>
+    </rule>
+    <rule ref="Generic.Metrics.CyclomaticComplexity" />
+ 
+    <!-- Lines can be 80 chars long, show errors at 120 chars -->
+    <rule ref="Generic.Files.LineLength">
+     <properties>
+           <property name="lineLimit" value="120"/>
+           <property name="absoluteLineLimit" value="120"/>
+     </properties>
+    </rule>
+
+    <!-- Use Unix newlines -->
+<!--    <rule ref="Generic.Files.LineEndings">
+     <properties>
+      <property name="eolChar" value="\n"/>
+     </properties>
+    </rule>-->
+ 
+</ruleset>

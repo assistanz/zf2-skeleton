@@ -1,0 +1,14 @@
+<?php
+// module/Security/view/security/user/add.phtml:
+
+$title = 'Add new user';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php echo $this->flashMessage() ?>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('users', array('action' => 'add')));
+$form->prepare();
+
+echo $this->form($form, 'horizontal');
