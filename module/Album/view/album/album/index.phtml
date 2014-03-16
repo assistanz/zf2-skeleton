@@ -22,15 +22,15 @@ $this->headTitle($title);
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($albums as $album) : ?>
+                <?php foreach ($albums as $user) : ?>
                     <tr>
-                        <td><?php echo $this->escapeHtml($album->title);?></td>
-                        <td><?php echo $this->escapeHtml($album->artist);?></td>
+                        <td><?php echo $this->escapeHtml($user->title);?></td>
+                        <td><?php echo $this->escapeHtml($user->artist);?></td>
                         <td>
                              <a href="<?php echo $this->url('album',
-                                array('action'=>'edit', 'id' => $album->id));?>">Edit</a>
+                                array('action'=>'edit', 'id' => $user->id));?>">Edit</a>
                         <a href="<?php echo $this->url('album',
-                                array('action'=>'delete', 'id' => $album->id));?>">Delete</a>
+                                array('action'=>'delete', 'id' => $user->id));?>">Delete</a>
                         </td>
                     </tr>
                <?php endforeach; ?>

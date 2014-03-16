@@ -39,7 +39,7 @@ class UserController extends AbstractActionController {
      * 
      * @var \Security\Service\UserService
      */
-    protected $_userService;
+    protected $userService;
 
     
     /**
@@ -74,11 +74,11 @@ class UserController extends AbstractActionController {
      * @return \Security\Service\UserService
      */
     public function getUserService() {
-        if ($this->_userService == null) {
-            $this->_userService = $this->getServiceLocator()->get('Security\Service\UserService');
+        if ($this->userService == null) {
+            $this->userService = $this->getServiceLocator()->get('Security\Service\UserService');
         }
         
-        return $this->_userService;
+        return $this->userService;
     }
     
 
@@ -197,17 +197,18 @@ class UserController extends AbstractActionController {
                 $user = $this->getUserService()->findById($userId);
                 if ($user) {
                     $this->getUserService()->remove($user);
+                    // Redirect to list of albums.
+                    $this->flashMessenger()->addSuccessMessage("User '{$user->name}' Deleted Successfully....");
                 }
             }
 
-            // Redirect to list of albums.
-            $this->flashMessenger()->addSuccessMessage("User '{$user->name}' Deleted Successfully....");
-            return $this->redirect()->toRoute('user');
+            
+            return $this->redirect()->toRoute('users');
         }
 
         return array(
             'id' => $userId,
-            'album' => $this->getUserService()->findById($userId)
+            'user' => $this->getUserService()->findById($userId)
         );
     }
     

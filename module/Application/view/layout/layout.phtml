@@ -2,47 +2,51 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headTitle('ZF2 ' . $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
 
         <!-- Le styles -->
-        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
-                        ->prependStylesheet($this->basePath() . '/css/DT_bootstrap.css')
+        <?php
+        echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
+                ->prependStylesheet($this->basePath() . '/css/DT_bootstrap.css')
                         ->prependStylesheet($this->basePath() . '/css/style.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
-                         ?>
+                ->prependStylesheet($this->basePath() . '/lib/bootstrap/css/bootstrap.min.css')
+        ?>
 
         <!-- Scripts -->
-        <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-                                      ->prependFile($this->basePath() . '/js/DT_bootstrap.js')
-                                      ->prependFile($this->basePath() . '/js/jquery.dataTables.js')
-                                      ->prependFile($this->basePath() . '/js/bootstrap.min.js')
-                                      ->prependFile($this->basePath() . '/js/jquery.min.js')?>
+        <?php
+        echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath() . '/js/all.js')
+//                ->prependFile($this->basePath() . '/lib/bootstrap/js/bootstrap.min.js')
+//                ->prependFile($this->basePath() . '/lib/jquery/jquery.min.js')
+        ?>
 
     </head>
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <nav class="navbar navbar-inverse" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                    </a>
-                    <a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Skeleton Application') ?></a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li class="<?php if($this->url('home') == $this->url()) { echo "active";}?>"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
-                            <li class="<?php if($this->url('album') == $this->url()) { echo "active";}?>"><a href="<?php echo $this->url('album') ?>"><?php echo $this->translate('Album') ?></a></li>
-<!--                            <li class="<?php if($this->url('users') == $this->url()) { echo "active";}?>"><a href="<?php echo $this->url('users') ?>"><?php echo $this->translate('User') ?></a></li>
-                            <li class="<?php if($this->url('zfcuser/login') == $this->url()) { echo "active";}?>"><a href="<?php echo $this->url('zfcuser/login') ?>"><?php echo $this->translate('Users') ?></a></li>-->
-                        </ul>
-                    </div><!--/.nav-collapse -->
+                    </button>
+                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Application Name') ?></a>
+                </div>
+
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="<?php echo ($this->url('home') == $this->url() ? "active" :"" ) ?>"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
+                        <li class="<?php echo ($this->url('album') == $this->url()? "active" : "") ?>"><a href="<?php echo $this->url('album') ?>"><?php echo $this->translate('Album') ?></a></li>
+                        <li class="<?php echo ($this->url('users') == $this->url()? "active" : "") ?>"><a href="<?php echo $this->url('users') ?>"><?php echo $this->translate('User') ?></a></li>
+                        <li class="<?php echo ($this->url('zfcuser/login') == $this->url() ? "active" : "") ?>"><a href="<?php echo $this->url('zfcuser/login') ?>"><?php echo $this->translate('Login') ?></a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
+        </nav>
         <div class="container">
             <?php echo $this->content; ?>
             <hr>

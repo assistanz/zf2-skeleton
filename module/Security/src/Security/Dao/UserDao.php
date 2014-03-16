@@ -96,7 +96,7 @@ class UserDao extends \Doctrine\ORM\EntityRepository {
      * 
      * @return \Security\Entity\User 
      */
-    public function findALL() {       
+    public function findAll() {       
         return parent::findAll();
     }
 

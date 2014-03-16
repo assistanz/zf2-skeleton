@@ -10,3 +10,4 @@ composer.lock
 data/cache/*
 data/Proxies/*
 vendor/*
+/public/lib/

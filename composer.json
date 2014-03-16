@@ -24,15 +24,19 @@
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.2.*",
         "zetacomponents/console-tools" : "dev-master",
-        "phpunit/phpunit": "3.7.*",
-        "doctrine/doctrine-orm-module": "0.7",
-        "zendframework/zend-developer-tools" : "dev-master",
+        "doctrine/doctrine-orm-module": "*",
+        "zendframework/zend-developer-tools" : "*",
         "zf-commons/zfc-base": "*",
         "zf-commons/zfc-user": "*",
         "zf-commons/zfc-user-doctrine-orm" : "0.1.1",
         "dlu/dlutwbootstrap": "dev-master",
         "bjyoungblood/bjy-authorize" : "dev-master",
-        "doctrine/migrations": "dev-master"
+        "doctrine/migrations": "dev-master",
+        "rwoverdijk/assetmanager": "1.*",
+        "components/bootstrap": "3.1.1"
+    },
+    "config": {
+        "component-dir": "public/lib"
     }
     
     

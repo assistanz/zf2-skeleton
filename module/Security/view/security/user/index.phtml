@@ -13,7 +13,7 @@ $this->headTitle($title);
 <div class="container" style="margin-top: 10px">
     <div id="example_wrapper" class="dataTables_wrapper form-inline" role="grid">
         <div class="row">
-        <div class="span6">
+        <div class="col-md-6">
             <div id="example_length" class="dataTables_length">
                 <label>
                     <select size="1" name="example_length" aria-controls="example">
@@ -26,7 +26,7 @@ $this->headTitle($title);
                 </label>
             </div>
         </div>
-        <div class="span6">
+        <div class="col-md-6">
             <div class="dataTables_filter" id="example_filter">
                 <label>
                     Search:
@@ -72,10 +72,10 @@ $this->headTitle($title);
                 </tbody>
         </table>
         <div class="row">
-            <div class="span6">
+            <div class="col-md-6">
                 <div class="dataTables_info" id="example_info">Showing 1 to 10 of 57 entries</div>
             </div>
-            <div class="span6">
+            <div class="col-md-6">
                 <div class="dataTables_paginate paging_bootstrap pagination">
                     <ul>
                       <li class="prev disabled"><a href="#">Prev</a></li>
@@ -94,7 +94,7 @@ $this->headTitle($title);
 <script type="text/javascript">
     $(document).ready(function() {
         $('#example').dataTable( {
-            "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
+            "sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>"
         } );
         
         $.extend( $.fn.dataTableExt.oStdClasses, {
