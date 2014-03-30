@@ -22,21 +22,22 @@ use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\Factory as InputFactory;
 use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
+use Zend\Crypt\Password\Bcrypt;
 
 /**
- * A album user.
+ * Application user.
  *
  * @ORM\Entity
  * @ORM\Table(name="user")
- * @property string $email
- * @property string $name
+ * @property string $username
+ * @property string $displayName
  * @property string $password
  * @property integer $state
  * @property integer $phoneNumber
  * @property string $gender
  * @property string $address
  */
-class User implements InputFilterAwareInterface {
+class User implements InputFilterAwareInterface, \ZfcUser\Entity\UserInterface {
 
     /**
      * Input filter for user data.
@@ -50,7 +51,7 @@ class User implements InputFilterAwareInterface {
      * 
      * @var integer
      * @ORM\Id
-     * @ORM\Column(type="integer", name="id");
+     * @ORM\Column(type="integer", name="user_id");
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
@@ -59,9 +60,9 @@ class User implements InputFilterAwareInterface {
      * User email.
      * 
      * @var string
-     * @ORM\Column(type="string", name="email")
+     * @ORM\Column(type="string", name="username")
      */
-    protected $email;
+    protected $username;
 
     /**
      * User name.
@@ -69,7 +70,7 @@ class User implements InputFilterAwareInterface {
      * @var string
      * @ORM\Column(type="string", name="name")
      */
-    protected $name;
+    protected $displayName;
 
     /**
      * User password.
@@ -88,28 +89,12 @@ class User implements InputFilterAwareInterface {
     protected $state;
 
     /**
-     * User gender.
-     * 
-     * @var string
-     * @ORM\Column(type="integer", name="gender")
-     */
-    protected $gender;
-
-    /**
-     * User phone number.
-     * 
-     * @var integer
-     * @ORM\Column(type="integer", name="phone_number")
-     */
-    protected $phoneNumber;
-
-    /**
      * User address.
      * 
-     * @var text
-     * @ORM\Column(type="integer", name="address")
+     * @var string
+     * @ORM\Column(type="integer", name="email")
      */
-    protected $address;
+    protected $email;
 
     /**
      * Magic getter to expose protected properties.
@@ -159,8 +144,8 @@ class User implements InputFilterAwareInterface {
      * 
      * @return string
      */
-    public function getEmail() {
-        return $this->email;
+    public function getUsername() {
+        return $this->username;
     }
 
     /**
@@ -170,8 +155,8 @@ class User implements InputFilterAwareInterface {
      * 
      * @return void
      */
-    public function setEmail($email) {
-        return $this->email = $email;
+    public function setUsername($email) {
+        return $this->username = $email;
     }
 
     /**
@@ -180,7 +165,7 @@ class User implements InputFilterAwareInterface {
      * @return string
      */
     public function getName() {
-        return $this->name;
+        return $this->displayName;
     }
 
     /**
@@ -191,7 +176,7 @@ class User implements InputFilterAwareInterface {
      * @return void
      */
     public function setName($name) {
-        return $this->name = $name;
+        return $this->displayName = $name;
     }
 
     /**
@@ -202,7 +187,8 @@ class User implements InputFilterAwareInterface {
      * @return void
      */
     public function setPassword($password) {
-        return $this->password = $password;
+        $bcrypt = new Bcrypt();
+        return $this->password = $bcrypt->create($password);
     }
 
     /**
@@ -304,7 +290,7 @@ class User implements InputFilterAwareInterface {
         foreach ($this as $key => $value) {
             $arrayValues[$key] = $value;
         }
-        
+
         return $arrayValues;
     }
 
@@ -317,9 +303,9 @@ class User implements InputFilterAwareInterface {
      */
     public function populate($data = array()) {
         $this->id = $data['id'];
-        $this->email = $data['email'];
-        $this->name = $data['name'];
-        $this->password = $data['password'];
+        $this->username = $data['email'];
+        $this->displayName = $data['name'];
+        $this->setPassword($data['password']);
 //        $this->_state = $data['state'];
         $this->phoneNumber = $data['phoneNumber'];
 //        $this->_gender = $data['gender'];
@@ -354,7 +340,7 @@ class User implements InputFilterAwareInterface {
                         'filters' => array(
                             array('name' => 'Int'),
                         ),
-                    )));
+            )));
 
 //            $inputFilter->add($factory->createInput(array(
 //                'name'     => 'username',
@@ -376,7 +362,7 @@ class User implements InputFilterAwareInterface {
 //            )));
 
             $inputFilter->add($factory->createInput(array(
-                        'name' => 'email',
+                        'name' => 'username',
                         'required' => true,
                         'filters' => array(
                             array('name' => 'StripTags'),
@@ -392,7 +378,7 @@ class User implements InputFilterAwareInterface {
                                 ),
                             ),
                         ),
-                    )));
+            )));
 
             $inputFilter->add($factory->createInput(array(
                         'name' => 'name',
@@ -411,7 +397,7 @@ class User implements InputFilterAwareInterface {
                                 ),
                             ),
                         ),
-                    )));
+            )));
 
             $inputFilter->add($factory->createInput(array(
                         'name' => 'password',
@@ -430,7 +416,7 @@ class User implements InputFilterAwareInterface {
                                 ),
                             ),
                         ),
-                    )));
+            )));
 
 
 //            $inputFilter->add($factory->createInput(array(
@@ -459,7 +445,7 @@ class User implements InputFilterAwareInterface {
                         'filters' => array(
                             array('name' => 'Int'),
                         ),
-                    )));
+            )));
 
 //            $inputFilter->add($factory->createInput(array(
 //                'name'     => 'gender',
@@ -478,12 +464,36 @@ class User implements InputFilterAwareInterface {
                             array('name' => 'StripTags'),
                             array('name' => 'StringTrim'),
                         ),
-                    )));
+            )));
 
             $this->_inputFilter = $inputFilter;
         }
 
         return $this->_inputFilter;
+    }
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getDisplayName() {
+        return $this->displayName;
+    }
+
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setDisplayName($displayName) {
+        $this->displayName = $displayName;
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
     }
 
 }

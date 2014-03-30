@@ -41,8 +41,18 @@
                     <ul class="nav navbar-nav">
                         <li class="<?php echo ($this->url('home') == $this->url() ? "active" :"" ) ?>"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
                         <li class="<?php echo ($this->url('album') == $this->url()? "active" : "") ?>"><a href="<?php echo $this->url('album') ?>"><?php echo $this->translate('Album') ?></a></li>
-                        <li class="<?php echo ($this->url('users') == $this->url()? "active" : "") ?>"><a href="<?php echo $this->url('users') ?>"><?php echo $this->translate('User') ?></a></li>
+                        <?php if(!$this->zfcUserIdentity()): ?>
                         <li class="<?php echo ($this->url('zfcuser/login') == $this->url() ? "active" : "") ?>"><a href="<?php echo $this->url('zfcuser/login') ?>"><?php echo $this->translate('Login') ?></a></li>
+                        <?php else: ?>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> Settings <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="<?php echo ($this->url('zfcuser/changeemail') == $this->url() ? "active" : "") ?>"><a href="<?php echo $this->url('zfcuser/changeemail') ?>"><?php echo $this->translate('Change Email') ?></a></li>
+                                <li class="<?php echo ($this->url('zfcuser/changepassword') == $this->url() ? "active" : "") ?>"><a href="<?php echo $this->url('zfcuser/changepassword') ?>"><?php echo $this->translate('Change Password') ?></a></li>
+                            </ul>
+                        </li>
+                        <li><a href="<?php echo $this->url('zfcuser/logout') ?>"><?php echo $this->translate('Logout') ?></a></li>
+                        <?php endif?>
                     </ul>
                 </div>
             </div>

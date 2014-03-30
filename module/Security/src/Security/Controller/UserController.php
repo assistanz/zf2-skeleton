@@ -116,7 +116,7 @@ class UserController extends AbstractActionController {
                     $data = $user->populate($form->getData());
                     $forceCreation = $request->getPost()->get('force', false);
                     $this->getUserService()->create($user, $forceCreation);
-                    $this->flashMessenger()->addSuccessMessage("User '{$user->name}' Added Successfully....");
+                    $this->flashMessenger()->addSuccessMessage("User '{$user->displayName}' Added Successfully....");
                     // Redirect to list of albums.
                     return $this->redirect()->toRoute('users'); 
                 } else {
@@ -198,7 +198,7 @@ class UserController extends AbstractActionController {
                 if ($user) {
                     $this->getUserService()->remove($user);
                     // Redirect to list of albums.
-                    $this->flashMessenger()->addSuccessMessage("User '{$user->name}' Deleted Successfully....");
+                    $this->flashMessenger()->addSuccessMessage("User '{$user->displayName}' Deleted Successfully....");
                 }
             }
 

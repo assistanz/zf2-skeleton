@@ -26,7 +26,7 @@ $this->headTitle($title);
                 </label>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6">            
             <div class="dataTables_filter" id="example_filter">
                 <label>
                     Search:
@@ -59,8 +59,8 @@ $this->headTitle($title);
                         foreach ($users as $user) : ?>
                         <tr class="odd gradeX">
                             <td><?php echo $this->escapeHtml($user->id);?></td>
-                            <td><?php echo $this->escapeHtml($user->name);?></td>
-                            <td><?php echo $this->escapeHtml($user->email);?></td>
+                            <td><?php echo $this->escapeHtml($user->displayName);?></td>
+                            <td><?php echo $this->escapeHtml($user->username);?></td>
                             <td>
                                  <a href="<?php echo $this->url('users',
                                     array('action'=>'edit', 'id' => $user->id));?>">Edit</a>
