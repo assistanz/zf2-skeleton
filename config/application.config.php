@@ -8,9 +8,11 @@ return array(
         'DluTwBootstrap',
         'ZfcBase',
         'ZfcUser',
+        'BjyAuthorize',
         'Application',
         'Album',
-        'Security'
+        'Security',
+        'AppConfig'
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(
